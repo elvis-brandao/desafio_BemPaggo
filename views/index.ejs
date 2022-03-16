@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/styleIndex.css">
+  <title>Desafio BemPaggo</title>
+</head>
+
+<body>
+  <main>
+    <form action="/checkout" class="container" method="get">
+      <div class="cabecalho-container">
+        <div class="oval"></div>
+        <div class="texto-cabecalho">
+          <h2>Formulário <br> para compra de</h2>
+          <h1>Pacote de adesivos</h1>
+        </div>
+        <div class="box"><i class="fa-solid fa-box-open"></i></div>
+      </div>
+
+      <div class="conteudo">
+        <div class="adesivos">
+          <h2>Quais adesivos:</h2>
+          
+          <label for="react"><input type="checkbox" name="react" id="react"> React - R$3,00/un</label>
+          <label for="vue"><input type="checkbox" name="vue" id="vue"> Vue - R$4,00/un</label>
+          <label for="angular"><input type="checkbox" name="angular" id="angular"> Angular - R$5,00/un</label>        
+        </div>
+
+        <div class="quantidade">
+          <h2>Quantos adesivos de cada?</h2>
+
+          <div class="selecao-qtde">
+            <button class="sub"><i class="fa-solid fa-minus"></i></button>
+            <input class="qtde" type="number" value="1" name="qtde" readonly>
+            <button class="add"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+
+        <div class="observacoes">
+          <h2>Observações:</h2>
+          <textarea name="observacoes" id="observacoes" placeholder="Alguma dúvida? Recado?"></textarea>
+        </div>
+
+      </div>
+
+      <div class="rodape-container">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </main>
+  <script src="/js/qtde_adesivos.js"></script>
+</body>
+
+</html>

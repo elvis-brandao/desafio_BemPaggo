@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styleCheckout.css">
+    <title>Checkout</title>
+</head>
+
+<body>
+
+    <div class='container'>
+        <div class='window'>
+            <div class='order-info'>
+                <div class='order-info-content'>
+                    <h2>Resumo do pedido</h2>
+                    <div class='line'></div>
+                    
+                    <% if(detalhesPedido.react){ %>
+                        <table class='order-table'>
+                            <tbody>
+                                <tr>
+                                    <td><img src='/img/react.png' class='full-width'></img></td>
+                                    <td>
+                                        <br> <span class='thin'><%= detalhesPedido.qtde %> * Adesivo React</span>
+                                        <br> <span class='thin small'> Preço por adesivo: R$<%= detalhesPedido.reactPreco.toFixed(2) %><br><br></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class='price'>R$ <%= detalhesPedido.totalReact.toFixed(2) %></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <div class='line'></div>
+                    <% } %>
+
+                    <% if(detalhesPedido.vue){ %>
+                        <table class='order-table'>
+                            <tbody>
+                                <tr>
+                                    <td><img src='/img/vue.png' class='full-width'></img></td>
+                                    <td>
+                                        <br> <span class='thin'><%= detalhesPedido.qtde %> * Adesivo Vue</span>
+                                        <br> <span class='thin small'> Preço por adesivo: R$<%= detalhesPedido.vuePreco.toFixed(2) %><br><br></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class='price'>R$ <%= detalhesPedido.totalVue.toFixed(2) %></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <div class='line'></div>
+                    <% } %>
+
+                    <% if(detalhesPedido.angular){ %>
+                        <table class='order-table'>
+                            <tbody>
+                                <tr>
+                                    <td><img src='/img/angular.png' class='full-width'></img></td>
+                                    <td>
+                                        <br> <span class='thin'><%= detalhesPedido.qtde %> * Adesivo Angular</span>
+                                        <br> <span class='thin small'> Preço por adesivo: R$<%= detalhesPedido.angularPreco.toFixed(2) %><br><br></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class='price'>R$ <%= detalhesPedido.totalAngular.toFixed(2) %></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <div class='line'></div>
+                    <% } %>
+
+                    <div class="observacao">
+                        <span class='thin'>Observações <br></span>
+                        <span class='thin small'><%= detalhesPedido.observacoes %></span>
+                    </div>
+
+                    <div class='total'>
+                        <span style='float:left;'>
+                            <div class='thin dense'>Frete</div>
+                            TOTAL
+                        </span>
+                        <span style='float:right; text-align:right;'>
+                            <% if(!detalhesPedido.react && !detalhesPedido.vue && !detalhesPedido.angular){ %>
+                                <div class='thin dense'>R$ 0.00</div>    
+                            <% }else{ %>
+                                <div class='thin dense'>R$ <%= detalhesPedido.frete %></div>
+                            <% } %>
+
+                            <% if(!detalhesPedido.react && !detalhesPedido.vue && !detalhesPedido.angular){ %>
+                                <div class='thin dense'>R$ 0.00</div>    
+                            <% }else{ %>
+                                R$ <%= detalhesPedido.totalPedido.toFixed(2) %>
+                            <% } %>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class='credit-info'>
+                <div class='credit-info-content'>
+                    <table class='half-input-table'>
+                        <tr>
+                            <td>Selecione seu cartão: </td>
+                            <td>
+                                <div class='dropdown' id='card-dropdown'>
+                                    <div class='dropdown-btn' id='current-card'>Visa</div>
+                                    <div class='dropdown-select'>
+                                        <ul>
+                                            <li>Master Card</li>
+                                            <li>American Express</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80'
+                        class='credit-card-image' id='credit-card-image'></img>
+                    Número do cartão
+                    <input class='input-field' autocomplete="off"></input>
+                    Nome impresso no cartão
+                    <input class='input-field' autocomplete="off"></input>
+
+                    <table class='half-input-table'>
+                        <tr>
+                            <td> Validade
+                                <input class='input-field' autocomplete="off"></input>
+                            </td>
+                            <td>CVC
+                                <input class='input-field' autocomplete="off"></input>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button class='pay-btn'>Finalizar pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/checkout.js"></script>
+</body>
+
+</html>
